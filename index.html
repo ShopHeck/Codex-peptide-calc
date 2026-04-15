@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peptide Reconstitution Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Precision tools for peptide protocols</p>
+        <h1>Peptide Reconstitution Calculator</h1>
+        <p class="hero-copy">
+          Enter your vial details and target concentration to instantly see how much bacteriostatic water
+          to add, with optional peptide molarity conversion.
+        </p>
+      </header>
+
+      <section class="calculator-card" aria-labelledby="calculator-title">
+        <h2 id="calculator-title">Calculate your reconstitution volume</h2>
+
+        <form id="calculator-form" novalidate>
+          <div class="field-grid">
+            <label class="field" for="peptideAmountMg">
+              <span>Peptide amount (mg)</span>
+              <input id="peptideAmountMg" name="peptideAmountMg" type="number" min="0" step="0.01" placeholder="e.g. 10" required />
+            </label>
+
+            <label class="field" for="targetConcentrationMgMl">
+              <span>Target concentration (mg/mL)</span>
+              <input
+                id="targetConcentrationMgMl"
+                name="targetConcentrationMgMl"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="e.g. 2"
+                required
+              />
+            </label>
+
+            <label class="field" for="doseMcg">
+              <span>Planned dose (mcg)</span>
+              <input id="doseMcg" name="doseMcg" type="number" min="0" step="1" placeholder="optional" />
+            </label>
+
+            <label class="field" for="molecularWeight">
+              <span>Molecular weight (g/mol)</span>
+              <input id="molecularWeight" name="molecularWeight" type="number" min="0" step="0.01" placeholder="optional" />
+            </label>
+          </div>
+
+          <button type="submit" class="cta-button">Calculate</button>
+          <p id="error-message" class="error-message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div id="results" class="results" aria-live="polite" hidden>
+          <article class="result-panel">
+            <p class="result-label">Add this much diluent</p>
+            <p id="volumeResult" class="result-value">0 mL</p>
+          </article>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <p class="result-label">Final concentration</p>
+              <p id="concentrationResult" class="result-subvalue">0 mg/mL</p>
+            </article>
+
+            <article class="result-card">
+              <p class="result-label">Draw volume per dose</p>
+              <p id="doseVolumeResult" class="result-subvalue">--</p>
+            </article>
+
+            <article class="result-card">
+              <p class="result-label">Concentration (mM)</p>
+              <p id="molarResult" class="result-subvalue">--</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="tips" aria-labelledby="tips-title">
+        <h2 id="tips-title">Quick safety checklist</h2>
+        <ul>
+          <li>Use sterile technique and validated protocols from your clinician or pharmacist.</li>
+          <li>Label concentration, date mixed, and storage conditions right after reconstitution.</li>
+          <li>Reconfirm all units before dosing to reduce conversion errors.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
